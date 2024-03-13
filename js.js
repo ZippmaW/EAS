@@ -7,5 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 for (let i = 0; i < 256; i++) {
-  container.appendChild(document.createElement("div"));
+  const square = document.createElement("div");
+
+  container.appendChild(square);
+
+  square.addEventListener("mouseover", () => {
+    square.style.backgroundColor = "black";
+  });
 }
