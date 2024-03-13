@@ -2,6 +2,7 @@
 
 const container = document.createElement("mainDiv");
 const button = document.createElement("button");
+const rgbString = ``;
 button.textContent = "Grid Select";
 container.id = "main";
 document.addEventListener("DOMContentLoaded", function () {
@@ -14,7 +15,7 @@ for (let i = 0; i < 256; i++) {
   container.appendChild(square);
 
   square.addEventListener("mouseover", () => {
-    square.style.backgroundColor = "black";
+    square.style.backgroundColor = randomRGB();
   });
 }
 
@@ -46,7 +47,14 @@ function createGrid(number) {
     square.style.height = dimension;
 
     square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = "black";
+      square.style.backgroundColor = randomRGB();
     });
   }
+}
+
+function randomRGB() {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+  return `rgb(${red}, ${green}, ${blue})`;
 }
