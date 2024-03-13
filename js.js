@@ -13,9 +13,12 @@ for (let i = 0; i < 256; i++) {
   const square = document.createElement("div");
 
   container.appendChild(square);
+  square.style.filter = "brightness(100%)";
 
   square.addEventListener("mouseover", () => {
     square.style.backgroundColor = randomRGB();
+    square.style.filter = `${darkenSquare(square)}`;
+    getBrightness(square);
   });
 }
 
@@ -46,8 +49,12 @@ function createGrid(number) {
     square.style.width = dimension;
     square.style.height = dimension;
 
+    square.style.filter = "brightness(100%)";
+
     square.addEventListener("mouseover", () => {
       square.style.backgroundColor = randomRGB();
+      square.style.filter = `${darkenSquare(square)}`;
+      getBrightness(square);
     });
   }
 }
@@ -57,4 +64,27 @@ function randomRGB() {
   const green = Math.floor(Math.random() * 256);
   const blue = Math.floor(Math.random() * 256);
   return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function darkenSquare(square) {
+  let compStyle = window.getComputedStyle(square);
+  let filterNum2 = "";
+  let filterNum =
+    compStyle
+      .getPropertyValue("filter")
+      .slice(11, compStyle.getPropertyValue("filter").length - 1) * 100;
+  if (filterNum > 0) {
+    filterNum -= 10;
+    filterNum2 = `brightness(${filterNum}%)`;
+    return filterNum2;
+  }
+}
+
+function getBrightness(square) {
+  let testStyle = window.getComputedStyle(square);
+  let testNum =
+    testStyle
+      .getPropertyValue("filter")
+      .slice(11, testStyle.getPropertyValue("filter").length - 1) * 100;
+  console.log(testNum);
 }
