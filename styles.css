@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  pad: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 640px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+#main > div {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+}
